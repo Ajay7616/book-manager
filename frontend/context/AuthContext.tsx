@@ -72,6 +72,7 @@ export function AuthProvider({
     const logout = async () => {
         await api.post("/auth/logout");
         setUser(null);
+        window.location.href = "/login";
     };
 
     useEffect(() => {
