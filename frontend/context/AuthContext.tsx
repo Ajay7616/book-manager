@@ -36,14 +36,14 @@ export function AuthProvider({
 }) {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(false);
+
     const signup = async (data: SignUpData) => {
         setLoading(true);
         try {
+            const encryptedPayload = await encrypt(data);
             const res = await api.post(
                 "/auth/signup",
-                {
-                    payload: encrypt(data)
-                }
+                encryptedPayload
             );
             const decrypted = await decrypt(res.data);
             setUser(decrypted.user);
