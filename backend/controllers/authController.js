@@ -87,14 +87,13 @@ const login = async (req, res) => {
 };
 
 const logout = (req, res) => {
-    console.log("logout hit");
     res.cookie("token", "", {
         httpOnly: true,
         secure: true,
         sameSite: "none",
         expires: new Date(0),
     });
-    res.json({message:"cleared"});
+    res.json({message:"Logout Successfully"});
 };
 
 const getMe = async (req, res) => {
