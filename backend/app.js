@@ -25,8 +25,11 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes);
 app.use("/api/books", bookRoutes);
 
-app.get("/", (req, res) => {
-    res.send("API is running");
+app.get("/api/health", (req, res) => {
+    res.status(200).json({
+        status: "ok",
+        message: "API is running"
+    });
 });
 
 app.use(errorHandler);
