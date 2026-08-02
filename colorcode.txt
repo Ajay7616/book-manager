@@ -1,0 +1,17 @@
+| Purpose                | Color Name        | Hex Code  |
+| ---------------------- | ----------------- | --------- |
+| Page Background        | Soft Paper Beige  | `#F0F0EA` |
+| Primary Brand          | Forest Green      | `#2E7D5B` |
+| Primary Hover          | Dark Forest Green | `#25684B` |
+| Secondary Background   | Light Green       | `#E8F5E9` |
+| CTA / Action Button    | Warm Orange       | `#FF8A3D` |
+| CTA Hover              | Dark Orange       | `#E97932` |
+| Orange Soft Background | Light Orange      | `#FFF0E8` |
+| Card Background        | Soft Gray         | `#F7F7F7` |
+| White Surface          | White             | `#FFFFFF` |
+| Main Text              | Dark Gray         | `#111827` |
+| Secondary Text         | Gray              | `#6B7280` |
+| Placeholder Text       | Light Gray        | `#9CA3AF` |
+| Border                 | Soft Gray         | `#E5E7EB` |
+| Error Background       | Light Red         | `#FEF2F2` |
+| Error Text             | Red               | `#DC2626` |
