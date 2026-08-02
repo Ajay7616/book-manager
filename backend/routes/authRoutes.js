@@ -6,7 +6,7 @@ const decryptPayload = require("../middleware/decryptPayload");
 
 router.post("/signup", decryptPayload,  signUp);
 router.post("/login", decryptPayload, login);
-router.post("/logout", logout);
+router.post("/logout", protect, logout);
 router.get("/me", protect, getMe);
 
 module.exports = router;
