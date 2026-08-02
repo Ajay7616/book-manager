@@ -3,6 +3,13 @@ import Navbar from "../components/layout/Navbar";
 import Link from "next/link";
 import { BookOpen, Library, BarChart3 } from "lucide-react";
 
+interface FeatureCardProps {
+  icon: React.ReactNode;
+  title: string;
+  text: string;
+  color: "green" | "orange";
+}
+
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#f0f0ea]">
@@ -62,7 +69,12 @@ export default function HomePage() {
   );
 }
 
-function FeatureCard({ icon, title, text, color }) {
+function FeatureCard({
+  icon,
+  title,
+  text,
+  color,
+}: FeatureCardProps) {
   return (
     <div 
       className="bg-white p-6 rounded-2xl text-left border border-[#E8F5E9]
