@@ -30,7 +30,8 @@ export default function SignUpPage() {
         try {
             setError("");
             await signup(formData);
-            router.push("/dashboard");
+            router.replace("/dashboard");
+            router.push;
         } catch (error: any) {
             setError(error.response?.data?.message || "Something went wrong");
         }

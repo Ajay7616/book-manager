@@ -29,7 +29,8 @@ export default function LoginPage() {
         try {
             setError("");
             await login(formData);
-            router.push("/dashboard");
+            router.replace("/dashboard");
+            router.refresh();
         } catch (error: any) {
             setError(
                 error.response?.data?.message ||
