@@ -65,7 +65,6 @@ export async function encrypt(data: any) {
 
 export async function decrypt(payload: any) {
     if (!payload || !payload.iv || !payload.content) {
-        console.log("Invalid payload:", payload);
         throw new Error("Invalid encrypted payload");
     }
 

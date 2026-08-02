@@ -63,7 +63,6 @@ export function AuthProvider({
             const decrypted = await decrypt(res.data);
             setUser(decrypted.user);
         } catch (error) {
-            console.log("Login error:", error);
             throw error;
         } finally {
             setLoading(false);
