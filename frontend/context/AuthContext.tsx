@@ -40,7 +40,7 @@ export function AuthProvider({
         setLoading(true);
         try {
             const res = await api.post(
-                "/auth/login",
+                "/auth/signup",
                 {
                     payload: encrypt(data)
                 }
@@ -57,7 +57,7 @@ export function AuthProvider({
         try {
             const encryptedPayload = await encrypt(data);
             const res = await api.post(
-                "/auth/signup",
+                "/auth/login",
                 encryptedPayload
             );
             const decrypted = await decrypt(res.data);
