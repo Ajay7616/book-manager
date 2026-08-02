@@ -8,6 +8,7 @@ import Select from "../ui/Select";
 
 interface BookFormProps {
     initialData?: Book | null;
+    loading?: boolean;
     onSubmit: (data: {
         title: string;
         author: string;
@@ -20,6 +21,7 @@ interface BookFormProps {
 export default function BookForm({
     initialData,
     onSubmit,
+    loading,
     onCancel,
 }: BookFormProps) {
     const [title, setTitle] = useState("");
@@ -71,18 +73,22 @@ export default function BookForm({
                     placeholder="Book Title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
+                    disabled={loading}
                     required
                 />
                 <Input
                     placeholder="Author"
                     value={author}
                     onChange={(e) => setAuthor(e.target.value)}
+                    disabled={loading}
                     required
                 />
                 <Input
                     placeholder="Tags (comma separated)"
                     value={tags}
                     onChange={(e) => setTags(e.target.value)}
+                    disabled={loading}
+                    required
                 />
                 <Select
                     value={status}
@@ -98,7 +104,14 @@ export default function BookForm({
             </div>
             <div className="flex flex-col gap-3">
                 <Button type="submit">
-                    {initialData ? "Update Book" : "Add Book"}
+                    {loading
+                        ? initialData
+                            ? "Updating Book..."
+                            : "Adding Book..."
+                        : initialData
+                            ? "Update Book"
+                            : "Add Book"
+                    }
                 </Button>
                 {initialData && (
                     <Button

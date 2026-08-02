@@ -19,7 +19,6 @@ export default function useBooks() {
     const [books, setBooks] = useState<Book[]>([]);
     const [loading, setLoading] = useState(false);
 
-
     const fetchBooks = async () => {
         try {
             setLoading(true);
@@ -38,16 +37,19 @@ export default function useBooks() {
         tags: string[];
         status: Book["status"];
     }) => {
-        const encryptedPayload = await encrypt(bookData);
-        const response = await api.post(
-            "/books",
-            encryptedPayload
-        );
-        const decrypted = await decrypt(
-            response.data
-        );
-        await fetchBooks();
-        return decrypted;
+        try {
+            setLoading(true);
+            const encryptedPayload = await encrypt(bookData);
+            const response = await api.post(
+                "/books",
+                encryptedPayload
+            );
+            const decrypted = await decrypt(response.data);
+            await fetchBooks();
+            return decrypted;
+        } finally {
+            setLoading(false);
+        }
     };
 
 
@@ -55,29 +57,36 @@ export default function useBooks() {
         id: string,
         bookData: Partial<Book>
     ) => {
-        const encryptedPayload = await encrypt(bookData);
-        const response = await api.put(
-            `/books/${id}`,
-            encryptedPayload
-        );
-        const decrypted = await decrypt(
-            response.data
-        );
-        await fetchBooks();
-        return decrypted;
+        try {
+            setLoading(true);
+            const encryptedPayload = await encrypt(bookData);
+            const response = await api.put(
+                `/books/${id}`,
+                encryptedPayload
+            );
+            const decrypted = await decrypt(response.data);
+            await fetchBooks();
+            return decrypted;
+        } finally {
+            setLoading(false);
+        }
     };
 
 
-    const deleteBook = async (
-        id: string
-    ) => {
-        const response = await api.delete( `/books/${id}`);
-        const decrypted = await decrypt(
-            response.data
-        );
-        await fetchBooks();
-        return decrypted;
+    const deleteBook = async (id: string) => {
+        try {
+            setLoading(true);
+            const response = await api.delete(
+                `/books/${id}`
+            );
+            const decrypted = await decrypt(response.data);
+            await fetchBooks();
+            return decrypted;
+        } finally {
+            setLoading(false);
+        }
     };
+
 
     return {
         books,

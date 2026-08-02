@@ -18,10 +18,16 @@ export default function BookCard({
     onDelete,
 }: BookCardProps) {
     const [showDeleteModal, setShowDeleteModal] = useState(false);
+    const [deleteLoading, setDeleteLoading] = useState(false);
 
     const handleDelete = () => {
-        onDelete(book._id);
-        setShowDeleteModal(false);
+        try {
+            setDeleteLoading(true);
+            onDelete(book._id);
+            setShowDeleteModal(false);
+        } finally {
+            setDeleteLoading(false);
+        }
     };
 
     return (
@@ -79,6 +85,7 @@ export default function BookCard({
 
             <ConfirmModal
                 open={showDeleteModal}
+                loading={deleteLoading}
                 title="Delete Book"
                 message={`Are you sure you want to delete "${book.title}"?`}
                 onCancel={() => setShowDeleteModal(false)}

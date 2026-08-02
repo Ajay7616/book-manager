@@ -5,6 +5,7 @@ import Modal from "./Modal";
 
 interface ConfirmModalProps {
     open: boolean;
+    loading?: boolean;
     title?: string;
     message?: string;
     onConfirm: () => void;
@@ -13,6 +14,7 @@ interface ConfirmModalProps {
 
 export default function ConfirmModal({
     open,
+    loading = false,
     title = "Delete Book",
     message = "Are you sure you want to delete this book?",
     onConfirm,
@@ -48,7 +50,7 @@ export default function ConfirmModal({
                         variant="danger"
                         onClick={onConfirm}
                     >
-                        Delete
+                        {loading ? "Deleting..." : "Delete"}
                     </Button>
                 </div>
             </div>

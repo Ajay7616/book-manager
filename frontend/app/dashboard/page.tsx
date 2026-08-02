@@ -99,6 +99,7 @@ export default function DashboardPage() {
             >
                 <BookForm
                     initialData={editingBook}
+                    loading={loading}
                     onSubmit={handleSubmit}
                     onCancel={closeForm}
                 />
