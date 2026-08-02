@@ -12,7 +12,7 @@ const app = express();
 
 app.use(
     cors({
-        origin: "personal-book-manager-ajay.vercel.app",
+        origin: "https://personal-book-manager-ajay.vercel.app",
         credentials: true,
     })
 );
